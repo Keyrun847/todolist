@@ -7,9 +7,61 @@
     <title><%= title %></title>
 </head>
 <body>
-    
-    <%= title %>
+    <h1 class="header">TODO App</h1>
+    <hr>
+    <form action="/addTask" method="post" id="form">
+        <div class="desc">
+            <label for="description">DESCRIPTION</label><br>
+            <input type="text" name="description" id="description" placeholder="What do you need to do?" required />
+        </div>
+        <hr>
+        <div class="catdate">
+            <div class="cat">
+                <label for="category">CATEGORY</label><br>
+                <select name="category" id="category">
+                    <option value="" disabled selected>Select the Category</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="School">School</option>
+                    <option value="Cleaning">Cleaning</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="date">
+                <label for="dueDate">DUE DATE</label><br>
+                <input type="date" name="dueDate" id="dueDate" required/>
+            </div>
+        </div>
+        <hr>
+    </form>
+    <div class="buttons">
+        <a href="/add"></a>
+            <button class="addtaskbtn" type="submit" form="form">
+                <i class="fa-solid fa-plus" style="color: #ffffff;margin-right: 4px;"></i>
+                ADD TASK
+            </button>
+        <button class="dlttaskbtn" type="button">
+            <i class="fa-solid fa-trash" style="color: #ffffff;margin-right: 4px;"></i>
+            DELETE TASKS
+        </button>
+    </div>
+    <hr>
+    <% for (let i of list) { %>
+        <div class="task">
+            <input type="checkbox" name="isDone" id="isDone" onclick="checkboxclicked()" <% if(i.isDone){ %><%= "checked" %><% } %> />
+            <div>
+                <p><%= i.description %></p>
+                <p><i class="fa-solid fa-calendar-days" style="color: #555a62;"></i>
+                    <%= i.date %>
+                </p>
+            </div>
+            <button class="catbtn" type="button"><%= i.category %></button>
+        </div>
+        <hr>
+    <% } %>
 
+
+    <script src="https://kit.fontawesome.com/e8afdb064a.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>

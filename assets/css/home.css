@@ -1,0 +1,74 @@
+@font-face {
+    font-family: google;
+    src: url('./GoogleSans.ttf');
+}
+body {
+    margin: 0;
+    font-family: 'google';
+    color: gray;
+    text-align: center;
+}
+.header {
+    text-align: center;
+}
+input,select {
+    border: none;
+    margin-top: 8px;
+    padding: 8px 0;
+    color: gray;
+}
+.desc {
+    text-align: left;
+    margin-left: 16px;
+}
+#description:focus {
+    border: none;
+}
+.catdate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0 16px;
+}
+.buttons {
+    padding: 3% 0;
+}
+button {
+    padding: 2.5%;
+    border: none;
+    color: aliceblue;
+}
+.addtaskbtn {
+    background-color: rgb(44, 40, 40);
+}
+.dlttaskbtn {
+    background-color: brown;
+}
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0 16px 0 0;
+}
+.task input {
+    flex: 2;
+}
+.task div {
+    flex: 5;
+}
+.catbtn {
+    flex: 3;
+    background-color: green;
+    max-width: 120px;
+    max-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+}
+input#isDone {
+    width: 20px;
+    height: 20px;
+}

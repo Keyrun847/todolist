@@ -1,5 +1,6 @@
 const express = require('express');
 const router = require('./routes/home');
+const db = require('./config/mongoose');
 const PORT = 3000;
 
 const app = express();

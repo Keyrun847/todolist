@@ -1,7 +1,7 @@
 const Task = require('../models/task');
 
 module.exports.home = async (req, res) => {
-    let tasks = await Task.find({});
+    let tasks = await Task.find({}).sort({ dueDate: 1 });
     res.render('home', {
         title: "Home",
         list: tasks,

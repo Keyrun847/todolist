@@ -17,18 +17,22 @@
         <hr>
         <div class="catdate">
             <div class="cat">
-                <label for="category">CATEGORY</label><br>
-                <select name="category" id="category">
-                    <option value="Personal">Personal</option>
-                    <option value="Work">Work</option>
-                    <option value="School">School</option>
-                    <option value="Cleaning">Cleaning</option>
-                    <option value="Other">Other</option>
-                </select>
+                <div>
+                    <label for="category">CATEGORY</label><br>
+                    <select name="category" id="category">
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="School">School</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
             </div>
             <div class="date">
-                <label for="dueDate">DUE DATE</label><br>
-                <input type="date" name="dueDate" id="dueDate" min="<%= new Date().toISOString().split("T")[0]; %>" required/>
+                <div>
+                    <label for="dueDate">DUE DATE</label><br>
+                    <input type="date" name="dueDate" id="dueDate" min="<%= new Date().toISOString().split("T")[0]; %>" required/>
+                </div>
             </div>
         </div>
         <hr>

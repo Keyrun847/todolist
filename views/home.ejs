@@ -52,7 +52,7 @@
             <div>
                 <p><%= i.description %></p>
                 <p><i class="fa-solid fa-calendar-days" style="color: #555a62;"></i>
-                    <%= i.date %>
+                    <%= new Date(i.dueDate).toUTCString().slice(5, 16) %>
                 </p>
             </div>
             <button class="catbtn" type="button"><%= i.category %></button>

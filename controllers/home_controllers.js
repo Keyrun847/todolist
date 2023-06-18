@@ -6,13 +6,6 @@ module.exports.home = async (req, res) => {
         title: "Home",
         list: tasks
     });
-
-    // {
-    //     description: "task",
-    //     date: new Date().toUTCString().slice(5, 16),
-    //     isDone: false,
-    //     category: 'Personal'
-    // }
 }
 
 module.exports.addTask = async function (req,res) {

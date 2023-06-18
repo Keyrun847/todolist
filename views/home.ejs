@@ -19,7 +19,6 @@
             <div class="cat">
                 <label for="category">CATEGORY</label><br>
                 <select name="category" id="category">
-                    <option value="" disabled selected>Select the Category</option>
                     <option value="Personal">Personal</option>
                     <option value="Work">Work</option>
                     <option value="School">School</option>
@@ -29,33 +28,50 @@
             </div>
             <div class="date">
                 <label for="dueDate">DUE DATE</label><br>
-                <input type="date" name="dueDate" id="dueDate" required/>
+                <input type="date" name="dueDate" id="dueDate" min="<%= new Date().toISOString().split("T")[0]; %>" required/>
             </div>
         </div>
         <hr>
     </form>
     <div class="buttons">
-        <a href="/add"></a>
             <button class="addtaskbtn" type="submit" form="form">
                 <i class="fa-solid fa-plus" style="color: #ffffff;margin-right: 4px;"></i>
                 ADD TASK
             </button>
         <button class="dlttaskbtn" type="button">
-            <i class="fa-solid fa-trash" style="color: #ffffff;margin-right: 4px;"></i>
-            DELETE TASKS
+            <a href="/deleteTasks">
+                <i class="fa-solid fa-trash" style="color: #ffffff;margin-right: 4px;"></i>
+                DELETE TASKS
+            </a>
         </button>
     </div>
     <hr>
-    <% for (let i of list) { %>
+    <% for (let i of list) {
+        let color = 'green';
+        switch(i.category){
+            case 'Personal': color = 'rgb(39, 117, 244)';
+                break;
+            case 'Work': color = 'rgb(205, 24, 242)';
+                break;
+            case 'School': color = 'rgb(229, 20, 45)';
+                break;
+            case 'Cleaning': color = 'rgb(242, 103, 38)';
+                break;
+            case 'default': color = 'green';
+        }
+    %>
         <div class="task">
-            <input type="checkbox" name="isDone" id="isDone" onclick="checkboxclicked()" <% if(i.isDone){ %><%= "checked" %><% } %> />
+            <form action="/isDone" method="POST" id="<%= i._id %>checkForm">
+                <input type="hidden" name="id" value=<%= i._id %> />
+                <input type="checkbox" onclick="document.getElementById('<%= i._id %>checkForm').submit()" name="isDone" id="isDone" <% if(i.isDone){ %><%= "checked" %><% } %> />
+            </form>
             <div>
                 <p><%= i.description %></p>
                 <p><i class="fa-solid fa-calendar-days" style="color: #555a62;"></i>
                     <%= new Date(i.dueDate).toUTCString().slice(5, 16) %>
                 </p>
             </div>
-            <button class="catbtn" type="button"><%= i.category %></button>
+            <button style="background-color: <%= color %>;" class="catbtn" type="button"><%= i.category %></button>
         </div>
         <hr>
     <% } %>

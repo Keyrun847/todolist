@@ -4,13 +4,12 @@ module.exports.home = async (req, res) => {
     let tasks = await Task.find({});
     res.render('home', {
         title: "Home",
-        list: tasks
+        list: tasks,
     });
 }
 
 module.exports.addTask = async function (req,res) {
     const data = req.body;
-    console.log(data.dueDate);
     const task = new Task({
         description: data.description,
         category: data.category,
@@ -18,5 +17,15 @@ module.exports.addTask = async function (req,res) {
         isDone: req.isDone
     })
     await task.save();
+    res.redirect('back');
+}
+
+module.exports.isDone = async (req, res) => {
+    await Task.findByIdAndUpdate(req.body.id, { isDone: (req.body.isDone)? true: false })
+    res.redirect('back');
+}
+
+module.exports.deleteTasks = async (req, res) => {
+    await Task.deleteMany({ isDone: true })
     res.redirect('back');
 }

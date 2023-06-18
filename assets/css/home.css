@@ -2,6 +2,9 @@
     font-family: google;
     src: url('./GoogleSans.ttf');
 }
+*:focus {
+    outline: none;
+}
 body {
     margin: 0;
     font-family: 'google';
@@ -20,6 +23,9 @@ input,select {
 .desc {
     text-align: left;
     margin-left: 16px;
+}
+#description {
+    width: 100%;
 }
 #description:focus {
     border: none;
@@ -52,11 +58,13 @@ button {
     text-align: left;
     padding: 0 16px 0 0;
 }
-.task input {
-    flex: 2;
+.task form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 .task div {
-    flex: 5;
+    flex: 6;
 }
 .catbtn {
     flex: 3;
@@ -71,4 +79,8 @@ button {
 input#isDone {
     width: 20px;
     height: 20px;
+}
+a {
+    text-decoration: none;
+    color: aliceblue;
 }

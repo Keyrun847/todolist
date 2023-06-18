@@ -37,6 +37,13 @@ input,select {
     text-align: left;
     padding: 0 16px;
 }
+.cat, .date {
+    width: 100%;
+}
+.date {
+    border-left: 1.5px solid grey;
+    text-align: center;
+}
 .buttons {
     padding: 3% 0;
 }
